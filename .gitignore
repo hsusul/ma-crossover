@@ -1,7 +1,21 @@
+# .gitignore
+
+# env / python junk
 .venv/
 __pycache__/
-**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# mac
 .DS_Store
+
+# data + outputs (don’t commit)
 data/raw/
 data/processed/
-reports/figures/
+
+# optional: if you don't want plots tracked, uncomment:
+# reports/figures/

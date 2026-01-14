@@ -37,7 +37,7 @@ def load_raw() -> pd.DataFrame:
     return df
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
-    
+    """builds long and short term features"""
     price_col = "Adj Close" 
     out = df.copy()
     out["price"] = out[price_col].astype(float)
@@ -49,12 +49,14 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 def save_features(df_feat: pd.DataFrame) -> None:
+    """saves new features to csv"""
     df_out = df_feat.copy()
     df_out.insert(0, "date", df_out.index.date)
     df_out.to_csv(OUT_FEATURES_CSV, index = False)
     print(f"Saved features -> {OUT_FEATURES_CSV}")
 
 def save_ma_plot(df_feat: pd.DataFrame) -> None:
+    """prints moving averages on plot"""
     short_col = f"ma_{SHORT_WINDOW}"
     long_col = f"ma_{LONG_WINDOW}"
     plt.figure()
